@@ -8,6 +8,9 @@ struct ContentView: View {
         VStack {
             Text("\(num)")
             
+            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+                Text("Prime")
+            })
             
         }
     }

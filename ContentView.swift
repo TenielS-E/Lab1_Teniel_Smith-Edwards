@@ -52,6 +52,17 @@ struct ContentView: View {
             }
         }
     }
+    
+    func isPrime(num: Int) -> Bool {
+        guard num > 1 else { return false }
+        for index in 2..<num {
+            if num % index == 0 {
+                return false
+            }
+        }
+        return true
+    }
+    
     func restart(){
         correct = 0
         count = 0

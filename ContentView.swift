@@ -12,6 +12,10 @@ struct ContentView: View {
                 Text("Prime")
             })
             
+            Button(action: {}, label: {
+                Text("Not Prime")
+            })
+            
         }
     }
 }

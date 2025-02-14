@@ -5,6 +5,7 @@ struct ContentView: View {
     @State private var num = Int.random(in: 1...100)
     @State private var timeCount = 5
     @State private var correct = 0
+    @State private var count = 0
     @State private var result = ""
     @State private var answered = false
     @State private var alerted = false
@@ -50,7 +51,12 @@ struct ContentView: View {
             }
         }
     }
-        
+    func restart(){
+        correct = 0
+        count = 0
+        num = Int.random(in: 1...100)
+        startTime()
+    }
 }
 
 

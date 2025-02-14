@@ -2,7 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     // state to declare num
-    @State private var num = Int.random(in: 1...100)
+    @State private var number = Int.random(in: 1...100)
     @State private var timeCount = 5
     @State private var correct = 0
     @State private var count = 0
@@ -15,7 +15,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Text("\(num)")
+            Text("\(number)")
             
             Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
                 Text("Prime")
@@ -48,7 +48,7 @@ struct ContentView: View {
             if timeCount > 0 {
                 timeCount -= 1
             } else if !answered {
-                // evaluate(primeAns: nil) // evaluates as incorrect
+                evaluate(primeAns: nil) // evaluates as incorrect
             }
         }
     }
@@ -63,10 +63,34 @@ struct ContentView: View {
         return true
     }
     
+    func evaluate(primeAns: Bool?) {
+        let isNumPrime = isPrime(num: number)
+        
+        if let output = primeAns {
+            if output == isNumPrime {
+                result = "correct"
+                correct += 1
+            } else {
+                result = "incorrect"
+            }
+        } else {
+            result = "incorrect"
+        }
+        
+        count += 1
+        
+        if count < 10 {
+            number = Int.random(in: 1...100)
+            startTime()
+        } else {
+            alerted = true
+        }
+    }
+    
     func restart(){
         correct = 0
         count = 0
-        num = Int.random(in: 1...100)
+        number = Int.random(in: 1...100)
         startTime()
     }
 }

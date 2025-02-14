@@ -17,11 +17,17 @@ struct ContentView: View {
         VStack {
             Text("\(number)")
             
-            Button(action: /*@START_MENU_TOKEN@*/{}/*@END_MENU_TOKEN@*/, label: {
+            Button(action: {
+                answered = true
+                isAnswer(primeAns: true)
+            }, label: {
                 Text("Prime")
             })
             
-            Button(action: {}, label: {
+            Button(action: {
+                answered = true
+                isAnswer(primeAns: false)
+            }, label: {
                 Text("Not Prime")
             })
             
@@ -44,6 +50,7 @@ struct ContentView: View {
         timeCount = 5
         result = ""
         answered = false
+        timer?.invalidate()
         timer = Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
             if timeCount > 0 {
                 timeCount -= 1
@@ -85,6 +92,10 @@ struct ContentView: View {
         } else {
             alerted = true
         }
+    }
+    
+    func isAnswer(primeAns: Bool) {
+        evaluate(primeAns: primeAns)
     }
     
     func restart(){

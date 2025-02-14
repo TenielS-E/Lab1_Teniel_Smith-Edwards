@@ -22,12 +22,20 @@ struct ContentView: View {
             
             Text("\(result)")
             
-            Text("Time")
-            
-            
-            
+            Text("\(timeCount)")
+                    
         }
+        .padding()
+        .onAppear()
+        .alert(isPresented: /*@START_MENU_TOKEN@*//*@PLACEHOLDER=Is Presented@*/.constant(false)/*@END_MENU_TOKEN@*/, content: {
+            Alert(title: Text("Quiz Ended"),
+            message: Text("Total: \(correct)/10"),
+                  dismissButton: .default(Text("OK"), action: restart()))
+        })
     }
+    
+
+        
 }
 
 

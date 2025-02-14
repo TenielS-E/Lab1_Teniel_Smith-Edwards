@@ -35,7 +35,8 @@ struct ContentView: View {
         .alert(isPresented: $alerted, content: {
             Alert(title: Text("Quiz Ended"),
             message: Text("Total: \(correct)/10"),
-                  dismissButton: .default(Text("OK"), action: restart()))
+                  dismissButton: .default(Text("OK"), action: restart)
+            )
         })
     }
     
